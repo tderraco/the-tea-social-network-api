@@ -1,4 +1,3 @@
-const { rmSync } = require("fs");
 const {User, Thought} = require("../models");
 
 module.exports +{
@@ -44,6 +43,6 @@ module.exports +{
             
             )
             .catch((err) => res.status(500).json(err));
-        }
+        },
+
     }
-}
