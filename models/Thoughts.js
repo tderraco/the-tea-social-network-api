@@ -1,4 +1,5 @@
-const {Schema, Model, Type} = require('mongoose');
+const {Schema, model, Type} = require('mongoose');
+const reactionSchema = require('./Reaction')
 const thoughtSchema = new Schema (
     {
         thoughtText: {
