@@ -17,7 +17,6 @@ router.route('/').get(getUser).post(createUser);
 router.route('/:userId')
 .get(getSingleUser)
 .put(updateUser)
-
 //http://localhost:3001/api/users/:userId/friends/:friendsId
 
 //router.route('/:userId/friends/:friendsId'
