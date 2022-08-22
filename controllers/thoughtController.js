@@ -2,7 +2,7 @@ const { User, Thought } = require("../models");
 
 module.exports = {
     getThought(req, res) {
-        Thought.find({})
+        Thought.find()
             .then((thought) => res.json(thought))
             .catch((err) => res.status(500).json(err));
 
@@ -21,19 +21,24 @@ module.exports = {
             .catch((err) => res.status(500).json(err));
     },
     createThought(req, res) {
+        console.log(req.body)
         Thought.create(req.body)
-            .then(({ _id }) => {
-                return User.findOneAndUpdate(
-                    { _id: req.body.user.Id },
-                    { $push: { thought: _id } },
-                    { new: true }
-                );
+            .then((thought) => {
+                res.json(thought)
+                // return User.findOneAndUpdate(
+                //     { _id: req.body.userId },
+                //     { $push: { thoughts: _id } },
+                //     { new: true }
+                // );
             })
-            .then((thought) =>
-                !thought
-                    ? res.status(404).json({ message: "No user found" })
-                    : res.json(thought)
-            )
+            // .then((thought) => {
+            //     console.log(thought)
+            //     !thought
+            //     ? res.status(404).json({ message: "No user found" })
+            //     : res.json(thought)
+            // }
+                
+            // )
             .catch((err) => res.status(500).json(err));
     },
     updateThought(req, res) {
